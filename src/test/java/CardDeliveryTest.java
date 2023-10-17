@@ -22,15 +22,14 @@ public class CardDeliveryTest {
 
 
         open("http://localhost:9999/");
-       //SelenideElement form = $(By.className("form_theme_alfa-on-white"));
-        $("[data-test-id=city] input").setValue("Санкт-Петербург");
+        $("[data-test-id='city'] input").setValue("Санкт-Петербург");
         String planningDate = generateDate(5, "dd.MM.yyyy");
-        $("[data-test-id=date] input").sendKeys (Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
-        $("[data-test-id=date] input").setValue(planningDate);
-        $("[data-test-id=name]input").setValue("Федор Иванов");
-        $("[data-test-id=phone]input").setValue("+71236549874");
-        $("[data-test-id=agreement]").click();
-        $("button").click();
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
+        $("[data-test-id='date'] input").setValue(planningDate);
+        $("[data-test-id='name']input").setValue("Федор Иванов");
+        $("[data-test-id='phone']input").setValue("+71236549874");
+        $("[data-test-id='agreement']").click();
+        $("button.button").click();
         $(".notification__content")
                 .shouldBe(visible, Duration.ofSeconds(15))
                 .shouldHave(exactText("Встреча успешно забронирована на " + planningDate));
